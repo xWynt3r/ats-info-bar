@@ -1,0 +1,73 @@
+﻿/*
+    Dashboard skin template.
+
+    If you want to create your own dashboard skin (or tweak something)
+    create a copy of the "/skins/template" directory and rename it
+    to something like: "/skins/your_skin_name" and edit config.json file inside.
+
+    See skin tutorial PDF file for more information.
+
+    CSS naming convention:
+
+    - Dashboard core script maps all telemetry data properties to respective class names,
+      so truck's speed will be .truck-speed and current gear is .truck-gear (see JSON).
+    - All boolean telemetry properties will have a special ".yes" class added
+      when the value is true (will be removed if value is false).
+    - When dashboard core script updates DOM it will always add
+      data-value attribute containing current value, so you
+      can use it to have custom css selectors based on the actual data
+      (for example, this skin uses .truck-gear[data-value="N"] to define
+      different style for neutral or reverse gear, see below).
+
+    For more information go to home page: https://github.com/Funbit/ets2-telemetry-server
+
+*/
+
+/* roboto-regular - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/roboto-v30-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('fonts/roboto-v30-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/roboto-v30-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/roboto-v30-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('fonts/roboto-v30-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('fonts/roboto-v30-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+}
+
+body {
+  cursor: pointer;
+  background: green;
+}
+
+.dashboard {
+  border-radius: 15px;
+  background: rgb(204,204,204);
+  background: linear-gradient(0deg, rgba(204,204,204,1) 0%, rgba(34,34,34,1) 15%, rgba(34,34,34,1) 85%, rgba(204,204,204,1) 100%);
+  height: 40px;
+  text-align: center;
+  border: 2px solid #ccc;
+}
+._text {
+  font-family: 'Roboto';
+  margin-top: 5px;
+  font-size: 25px;
+  color: #fff;
+}
+
+.trailer-attached{
+  visibility: hidden;
+  display: none;
+}
+
+.trailer-attached.yes {
+  visibility: visible !important;
+  display: inline;
+}
+
+.fa-grip-lines-vertical {
+  color: #999 !important
+}
+
