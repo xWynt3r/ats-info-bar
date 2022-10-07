@@ -10,4 +10,4 @@ A skin for [Funbit/ets2-telemetry-server](https://github.com/Funbit/ets2-telemet
 - Fire up your `Ets2TelemetryServer.exe`
 - Click on HTML5 App Url and then select the `Information Display Bar` skin.
 - (If you use OBS) Copy the link and add it to your scene as a Browser Source.
-- Enjoy! (If you are enjoying, I always appreciate [a coffee](https://streamelements.com/xwynt3r/tip)
+- Enjoy! (If you are enjoying, I always appreciate [a coffee](https://streamelements.com/xwynt3r/tip))
