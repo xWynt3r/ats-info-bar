@@ -4,6 +4,8 @@ A skin for [Funbit/ets2-telemetry-server](https://github.com/Funbit/ets2-telemet
 
 ## Getting Started
 
+- Download the latest [Funbit/ets2-telemetry-server](https://github.com/Funbit/ets2-telemetry-server/tags) release.
+- Install as per the instructions on that repository.
 - Download the latest release from the release tab.
 - Unzip the contents into the `ets2-telemetry-server\server\Html` folder.
 - Allow the `dashboard-host.html` file to be overwritten.
