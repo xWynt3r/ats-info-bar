@@ -7,10 +7,6 @@
     // this function is called before everything else, 
     // so you may perform any DOM or resource initializations / image preloading here
 
-    utils.preloadImages([
-        'images/bg-off.jpg', 'images/bg-on.jpg'
-    ]);
-
     // return to menu by a click
     $(document).add('body').on('click', function () {
         window.history.back();
@@ -42,15 +38,16 @@ Funbit.Ets.Telemetry.Dashboard.prototype.filter = function (data, utils) {
     data.trailer.mass = Math.round((data.trailer.mass * 2.205)) + ' lbs';
     // calculate miles to go
     data.navigation.milesToGo = data.navigation.estimatedDistance / 1609;
-    data.navigation.preEta = data.truck.speedMph > 5 ? (data.navigation.milesToGo / data.truck.speedMph)/data.game.timeScale : '';
-    data.navigation.etaHours = data.navigation.preEta == '' ? '--':Math.floor(data.navigation.preEta);
-    data.navigation.etaMinutes = data.navigation.preEta == '' ? '--':Math.floor((data.navigation.preEta % 1) * 60);
+    data.navigation.preEta = data.truck.speedMph > 5 ? (data.navigation.milesToGo / data.truck.speedMph)/data.game.timeScale : 
+        (data.navigation.milesToGo / (data.navigation.speedLimit * 0.621371))/data.game.timeScale;
+    data.navigation.etaHours = Math.floor(data.navigation.preEta);
+    data.navigation.etaMinutes = Math.floor((data.navigation.preEta % 1) * 60);
     // calculate wear
-    var wearSumPercent = data.truck.wearEngine * 100 * 0.369876379 +
-        data.truck.wearTransmission * 100 * 0.125850054 +
-        data.truck.wearCabin * 100 * 0.228602019 +
-        data.truck.wearChassis * 100 * 0.217146156 +
-        data.truck.wearWheels * 100 * 0.058525;
+    var wearSumPercent = Math.max(data.truck.wearEngine * 100,
+        data.truck.wearTransmission * 100,
+        data.truck.wearCabin * 100,
+        data.truck.wearChassis * 100,
+        data.truck.wearWheels * 100);
     wearSumPercent = Math.min(wearSumPercent, 100);
     data.truck.wearSum = Math.round(wearSumPercent) + '%';
     data.trailer.wear = Math.round(data.trailer.wear * 100) + '%';
